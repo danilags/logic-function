@@ -124,8 +124,8 @@ class HomePage extends React.Component {
   }
 
   // render error message
-  renderFeedBack(message) {
-    return <p style={styles.feedBack}>{message}</p>
+  renderFeedBack(message, index) {
+    return <p key={index} style={styles.feedBack}>{message}</p>
   }
 
   render() {
@@ -153,7 +153,7 @@ class HomePage extends React.Component {
               />
                 {
                   !this.errorChecker('name') ? null :
-                  this.state._error.errors.name.map(item => this.renderFeedBack(item))
+                  this.state._error.errors.name.map((item, index) => this.renderFeedBack(item, index))
                 }
             </Col>
           </Row>
@@ -171,7 +171,7 @@ class HomePage extends React.Component {
               />
                 {
                   !this.errorChecker('email') ? null :
-                  this.state._error.errors.email.map(item => this.renderFeedBack(item))
+                  this.state._error.errors.email.map((item, index) => this.renderFeedBack(item, index))
                 }
             </Col>
           </Row>
@@ -202,7 +202,7 @@ class HomePage extends React.Component {
                   />
                     {
                       !this.errorChecker('phoneNumber') ? null :
-                      this.state._error.errors.phoneNumber.map(item => this.renderFeedBack(item))
+                      this.state._error.errors.phoneNumber.map((item, index) => this.renderFeedBack(item, index))
                     }
                 </Col>
               </Row>
