@@ -7,7 +7,6 @@ import {
   Label,
   Input,
   Button,
-  FormFeedback
 } from 'reactstrap';
 
 import { isEmailFormat } from '../utils';
@@ -35,6 +34,7 @@ class HomePage extends React.Component {
     this.onClearToggle = this.onClearToggle.bind(this);
   }
 
+  // dynamic checker on property state
   formValidation() {
     let errors = {};
     if (this.state.name === '')
@@ -59,24 +59,28 @@ class HomePage extends React.Component {
     return errors;
   }
 
+  // func to dynamic handle onChangetext
   handleChangeText(e){
     const lastState={...this.state};
     lastState[e.target.name]=e.target.value;
     this.setState({...lastState});
   }
 
+  // func to onChanges selected value on isSubscribe
   handleChecked() {
     this.setState({
       isSubscribe: !this.state.isSubscribe
     })
   }
 
+  // func to open/close modal
   onToggleModal() {
     this.setState({
       isDone: !this.state.isDone
     })
   }
 
+  // clearing state to default
   onClearToggle() {
     this.setState({
       name: '',
@@ -90,7 +94,8 @@ class HomePage extends React.Component {
       isDone: false
     })
   }
- 
+  
+  // func to changes the phoneCode
   handleChangeOption = (e) => {
     const lastOption = this.state.listCode;
     const indexItem =  e.target.options.selectedIndex;
@@ -100,6 +105,7 @@ class HomePage extends React.Component {
     })
   }
 
+  // func submit data
   onSubmitData(e) {
     e.preventDefault();
     const isComplete = this.formValidation();
@@ -108,21 +114,21 @@ class HomePage extends React.Component {
     }
   }
 
+  // func to validate from component
   errorChecker(name) {
     if(this.state._error!==null){
       const hasil = Object.keys(this.state._error.errors).filter(err => err === name).length > 0;
-      console.log('HASIL ', hasil, ' --- ', this.state._error)
       return Object.keys(this.state._error.errors).filter(err => err === name).length > 0;
     }
     return false;
   }
 
+  // render error message
   renderFeedBack(message) {
     return <p style={styles.feedBack}>{message}</p>
   }
 
   render() {
-    console.log('THIS STATE ', this.state);
     return (
       <Container style={styles.container}>
         <ModalSuccess 
