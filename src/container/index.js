@@ -137,7 +137,7 @@ class HomePage extends React.Component {
           onClearToggle={this.onClearToggle}
           email={this.state.email}
         />
-        <h3 onClick={() => this.errorChecker('name')}>JS Function</h3>
+        <h3>JS Function</h3>
         <Form onSubmit={this.onSubmitData}>
           <Row style={styles.row}>
             <Col md={2} style={styles.titleItem}>
